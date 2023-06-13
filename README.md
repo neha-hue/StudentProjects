@@ -6,7 +6,9 @@
 <h2>Java</h2>
 <h2>MySQL</h2>
 <h2>Spring Boot</h2>
+<h2>Spring Data JPA</h2>
 <h2>Maven</h2>
+<h2>Lombok</h2>
 
 <h1>Prerequisites</h1>
 Before running this application, ensure that you have the following:<br/>
