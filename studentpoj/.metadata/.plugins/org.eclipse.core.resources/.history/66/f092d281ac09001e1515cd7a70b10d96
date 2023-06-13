@@ -1,0 +1,46 @@
+package com.stud.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.stud.exceptions.StudentException;
+import com.stud.model.Student;
+import com.stud.repo.StudentRepo;
+
+@Service
+public class StudentServiceImpl implements StudentService {
+@Autowired StudentRepo studentRepo;
+	@Override
+	public Student createStudent(Student student) {
+	Student createStudent=studentRepo.save(student);
+		return createStudent;
+	}
+
+	@Override
+	public Student updateStudent(Student student, Integer studentId) throws StudentException {
+		Student updateStudent=studentRepo.findById(studentId).orElseThrow(()->new StudentException("student not found"));
+		return studentRepo.save(student);
+	}
+	}
+
+	@Override
+	public Student getStudentById(Integer studentId) throws StudentException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Student> getAllStudent() throws StudentException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String deleteStudent(Integer studentId) throws StudentException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

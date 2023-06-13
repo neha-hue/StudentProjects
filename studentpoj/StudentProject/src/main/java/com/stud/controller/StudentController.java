@@ -1,0 +1,62 @@
+package com.stud.controller;
+
+import java.util.List;
+
+import org.apache.coyote.http11.Http11InputBuffer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.stud.exceptions.StudentException;
+import com.stud.model.Student;
+import com.stud.services.StudentService;
+
+import jakarta.validation.Valid;
+
+@RestController
+@RequestMapping("/students")
+public class StudentController {
+	@Autowired
+	private StudentService studentService;
+	
+	@GetMapping
+	public ResponseEntity<List<Student>> getAllStudents(){
+		List<Student>students=studentService.getAllStudent();
+		return new ResponseEntity<>(students,HttpStatus.OK);
+	}
+	
+	@PostMapping
+	public ResponseEntity<Student> createStudent(@Valid @RequestBody Student student){
+		Student createStudent=studentService.createStudent(student);
+		return new ResponseEntity<>(createStudent,HttpStatus.CREATED);
+	}
+	
+	@GetMapping("/{studentId}")
+	public ResponseEntity<Student> getStudentById(@Valid @PathVariable Integer studentId) throws StudentException{
+		Student getStudentById=studentService.getStudentById(studentId);
+		return new ResponseEntity<>(getStudentById,HttpStatus.OK);
+		
+	}
+	
+	
+	@PutMapping("/{studentId}")
+	public ResponseEntity<Student> updateStudent(@Valid @PathVariable Integer studentId,@RequestBody Student student) throws StudentException{
+		Student updateStudent=studentService.updateStudent(student, studentId);
+		return new ResponseEntity<>(updateStudent,HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/{studentId}")
+	public ResponseEntity<String> deleteStudent(@Valid @PathVariable Integer studentId) throws StudentException{
+		String deleteStudent=studentService.deleteStudent(studentId);
+		return new ResponseEntity<>(deleteStudent,HttpStatus.OK);
+		
+	}
+}
