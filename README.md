@@ -1,7 +1,7 @@
 # StudentProjects
-<h1>This repository provides a simple CRUD (Create, Read, Update, Delete) application for managing student records using Spring Boot. </h1>
-<h1>The application allows users to perform basic operations on student data, such as adding new students, retrieving student details, updating existing student records, and deleting student information.</h1>
-<h1>Used Tech stacks and Tools</h1><br/>
+<h3>This repository provides a simple CRUD (Create, Read, Update, Delete) application for managing student records using Spring Boot. </h3>
+<h3>The application allows users to perform basic operations on student data, such as adding new students, retrieving student details, updating existing student records, and deleting student information.</h3>
+<h2>Used Tech stacks and Tools</h2><br/>
 
 <h2>Java</h2>
 <h2>MySQL</h2>
